@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Modality Assignment - RIS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">RIS</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/book_exam.html">Book Exam</a>
+                <a class="nav-link active" href="/modality_assignment.html">Exam Modality Assignment</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Exam Modality Assignment</h2>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Radiologists</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="radiologistsList">
+                            <!-- Radiologists will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Operators</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="operatorsList">
+                            <!-- Operators will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h3>Pending Exams</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Modality</th>
+                        <th>Scheduled Date</th>
+                        <th>Radiologist</th>
+                        <th>Operator</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="pendingExamsTable">
+                    <!-- Pending exams will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Assignment Modal -->
+    <div class="modal fade" id="assignmentModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Assign Staff to Exam</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="assignmentForm">
+                        <div class="mb-3">
+                            <label for="assignRadiologist" class="form-label">Radiologist</label>
+                            <select class="form-control" id="assignRadiologist">
+                                <option value="">Select Radiologist</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="assignOperator" class="form-label">Operator</label>
+                            <select class="form-control" id="assignOperator">
+                                <option value="">Select Operator</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveAssignment">Save Assignment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/modality_assignment.js"></script>
+</body>
+</html> 

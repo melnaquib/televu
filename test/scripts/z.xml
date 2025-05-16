@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<file-format>
+<meta-header xfer="1.2.840.10008.1.2.1" name="Little Endian Explicit">
+<element tag="0002,0000" vr="UL" vm="1" len="4" name="FileMetaInformationGroupLength">208</element>
+<element tag="0002,0001" vr="OB" vm="1" len="2" name="FileMetaInformationVersion" binary="hidden"></element>
+<element tag="0002,0002" vr="UI" vm="1" len="26" name="MediaStorageSOPClassUID">1.2.276.0.7230010.3.1.0.1</element>
+<element tag="0002,0003" vr="UI" vm="1" len="64" name="MediaStorageSOPInstanceUID">1.2.826.0.1.3680043.8.498.79566638453766759873097976632973141376</element>
+<element tag="0002,0010" vr="UI" vm="1" len="18" name="TransferSyntaxUID">1.2.840.10008.1.2</element>
+<element tag="0002,0012" vr="UI" vm="1" len="34" name="ImplementationClassUID">1.2.826.0.1.3680043.9.6676.1.0.0.1</element>
+<element tag="0002,0013" vr="SH" vm="1" len="12" name="ImplementationVersionName">OSIMISHL7DWL</element>
+</meta-header>
+<data-set xfer="1.2.840.10008.1.2" name="Little Endian Implicit">
+<element tag="0008,0005" vr="CS" vm="1" len="10" name="SpecificCharacterSet">ISO_IR 100</element>
+<element tag="0008,0018" vr="UI" vm="1" len="64" name="SOPInstanceUID">1.2.826.0.1.3680043.8.498.79566638453766759873097976632973141376</element>
+<element tag="0008,0050" vr="SH" vm="1" len="6" name="AccessionNumber">B100Z</element>
+<element tag="0008,0090" vr="PN" vm="1" len="46" name="ReferringPhysicianName">5101^__REF_PHYS_NAME__^__REF_PHYS_NAME__^P^^DR</element>
+<sequence tag="0008,1110" vr="SQ" card="0" len="0" name="ReferencedStudySequence">
+</sequence>
+<sequence tag="0008,1120" vr="SQ" card="0" len="0" name="ReferencedPatientSequence">
+</sequence>
+<element tag="0010,0010" vr="PN" vm="1" len="16" name="PatientName">__PATIENT_NAME__</element>
+<element tag="0010,0020" vr="LO" vm="1" len="14" name="PatientID">__PATIENT_ID__</element>
+<element tag="0010,0021" vr="LO" vm="1" len="10" name="IssuerOfPatientID">__CHEQD__</element>
+<element tag="0010,0030" vr="DA" vm="1" len="8" name="PatientBirthDate">19450804</element>
+<element tag="0010,0040" vr="CS" vm="1" len="2" name="PatientSex">M</element>
+<element tag="0010,1000" vr="LO" vm="0" len="0" name="RETIRED_OtherPatientIDs"></element>
+<element tag="0010,1040" vr="LO" vm="1" len="20" name="PatientAddress">__PATIENT_ADDRESS__</element>
+<element tag="0010,2292" vr="LO" vm="1" len="2" name="PatientBreedDescription">WH</element>
+<element tag="0020,000d" vr="UI" vm="1" len="64" name="StudyInstanceUID">1.2.826.0.1.3680043.8.498.23446067485940988949283416700601043548</element>
+<element tag="0032,1032" vr="PN" vm="1" len="24" name="RequestingPhysician">7101^ESTRADA^JAIME^P^^DR</element>
+<element tag="0032,1060" vr="LO" vm="1" len="12" name="RequestedProcedureDescription">Procedure 1</element>
+<sequence tag="0040,0100" vr="SQ" card="1" len="146" name="ScheduledProcedureStepSequence">
+<item card="8" len="138">
+<element tag="0008,0060" vr="CS" vm="1" len="2" name="Modality">DX</element>
+<element tag="0008,0090" vr="PN" vm="1" len="46" name="ReferringPhysicianName">5101^__REF_PHYS_NAME__^__REF_PHYS_NAME__^P^^DR</element>
+<element tag="0040,0001" vr="AE" vm="1" len="8" name="ScheduledStationAETitle">UNKNOWN</element>
+<element tag="0040,0002" vr="DA" vm="0" len="0" name="ScheduledProcedureStepStartDate"></element>
+<element tag="0040,0006" vr="PN" vm="0" len="0" name="ScheduledPerformingPhysicianName"></element>
+<element tag="0040,0007" vr="LO" vm="1" len="12" name="ScheduledProcedureStepDescription">Procedure 1</element>
+<element tag="0040,0009" vr="SH" vm="1" len="6" name="ScheduledProcedureStepID">A100Z</element>
+<element tag="0040,0010" vr="SH" vm="0" len="0" name="ScheduledStationName"></element>
+</item>
+</sequence>
+<element tag="0040,1001" vr="SH" vm="1" len="6" name="RequestedProcedureID">A100Z</element>
+</data-set>
+</file-format>

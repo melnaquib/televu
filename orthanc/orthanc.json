@@ -1,0 +1,34 @@
+{
+  "Name": "TeleVU PACS",
+  "StorageDirectory": "/var/lib/orthanc/db",
+  "Python" : {
+    "Verbose" : true,
+    "DisplayMemoryUsage" : false,
+    "AllowThreads" : true
+  },
+  "PythonScript": "/usr/share/orthanc/plugins/python/plugin.py",
+  "PythonVerbose": true,
+  "RemoteAccessAllowed" : true,
+  "RestApiWriteToFileSystemEnabled" : true,
+
+  "RegisteredUsers" : {
+    "demo" : "demo"
+  },
+
+  "DicomAet": "PACS1",
+  "DicomPort": 4242,
+  "HttpPort": 8042,
+  "HttpServerEnabled": true,
+  "AuthenticationEnabled": false,
+  "DicomTlsEnabled": false,
+  "HttpsVerifyPeers" : false,
+  "DicomAlwaysAllowEcho": true,
+  "DicomAlwaysAllowFind": true,
+  "DicomAlwaysAllowStore": true,
+  "DicomAlwaysAllowGet": true,
+  "DicomCheckCalledAet" : false,
+  "DicomCheckModalityHost" : false,
+  "WebDavEnabled": true,
+  "WebDavUploadAllowed": true
+
+}
