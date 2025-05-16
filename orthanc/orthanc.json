@@ -29,6 +29,12 @@
   "DicomCheckCalledAet" : false,
   "DicomCheckModalityHost" : false,
   "WebDavEnabled": true,
-  "WebDavUploadAllowed": true
+  "WebDavUploadAllowed": true,
+
+  "DicomModalities" : {
+    "FINDSCU" : ["FINDSCU", "127.0.0.1", 4242],
+    "CHARLES" : ["FINDSCU", "127.0.0.1", 4242],
+    "DAVE" : ["FINDSCU", "127.0.0.1", 4242]
+  }
 
 }

@@ -3,7 +3,7 @@ import orthanc
 import pydicom
 
 # Import all callbacks
-# from find_req_cb import OnFindReq
+from find_req_cb import OnFindReq
 from mwl_req_cb import onWorklistReq
 
 # def OnStoredInstance(dicom, instanceId):
@@ -26,7 +26,7 @@ from mwl_req_cb import onWorklistReq
 #     print(f"Change detected - Type: {changeType}, Level: {level}, Resource: {resource}")
 
 # orthanc.RegisterOnChangeCallback(OnChange)
-# orthanc.RegisterFindCallback(onFindReq)
+orthanc.RegisterFindCallback(onFindReq)
 # orthanc.RegisterMoveCallback(OnMove)
 orthanc.RegisterWorklistCallback(onWorklistReq)
 

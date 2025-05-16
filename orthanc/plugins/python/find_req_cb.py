@@ -1,9 +1,17 @@
 import json
 import orthanc
 import pprint
+import did
+
+def doctor_allowed(answer, doctor):
+    return doctor in ['CHARLES']
 
 def OnFindReq(answers, query, issuerAet, calledAet):
     print('Received incoming C-FIND request from %s:' % issuerAet)
+    retrun
+
+    answers = list(filter(lambda answer: doctor_allowed(answer, issuerAet), answers))
+    # res = FindAnswers(answers, query, issuerAet, calledAet)
 
     answer = {}
     for i in range(query.GetFindQuerySize()):
@@ -15,10 +23,6 @@ def OnFindReq(answers, query, issuerAet, calledAet):
 
     answers.FindAddAnswer(orthanc.CreateDicom(
         json.dumps(answer), None, orthanc.CreateDicomFlags.NONE))
-
-def OnMove(**request):
-    orthanc.LogWarning('C-MOVE request to be handled in Python: %s' %
-                       json.dumps(request, indent = 4, sort_keys = True))
 
     # To indicate a failure in the processing, one can raise an exception:
     #   raise Exception('Cannot handle C-MOVE')
