@@ -1,3 +1,22 @@
+# TeleVU
+
+Medical Imaging Server; PACS, that gives patient total control over medical images
+Televu can be deployed stand alone, or as a router in exising systems, to replace normal patient IDs with cheqd DIDs
+System is being developed to compliant with relevant standards;
+IHE, HL7, DICOM, HIPAA
+
+Typical Scenario
+
+- RIS Simulator Send Order Messages; HL7 ORM^O01 messages with patient DIDs
+- PACS System recieves Order, and prepares Modality Worklist entries for Radiology machines to get patient information and write inside DICOM images and studies
+- patient grants access by issuing VC for Doctors DID
+Machine Queries PACS, gets patient Info, Construct DICOM Medical Image, and send to PACS
+Doctor, Using DICOM Viewer from his workstation, queries PACS for patietns images
+-PACS filter results by verifying VCs issued by Patients to Doctors
+
+
+## RUN
+
 docker compose up
 
 cd test/scripts
