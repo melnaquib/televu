@@ -3,7 +3,7 @@ import orthanc
 import pydicom
 
 # Import all callbacks
-from find_req_cb import OnFindReq
+from find_req_cb import onFindReq, onMove
 from mwl_req_cb import onWorklistReq
 
 # def OnStoredInstance(dicom, instanceId):
@@ -26,8 +26,8 @@ from mwl_req_cb import onWorklistReq
 #     print(f"Change detected - Type: {changeType}, Level: {level}, Resource: {resource}")
 
 # orthanc.RegisterOnChangeCallback(OnChange)
-orthanc.RegisterFindCallback(onFindReq)
-# orthanc.RegisterMoveCallback(OnMove)
+# orthanc.RegisterFindCallback(onFindReq)
+orthanc.RegisterMoveCallback(onMove)
 orthanc.RegisterWorklistCallback(onWorklistReq)
 
 print("Python plugin loaded successfully!") 

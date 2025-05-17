@@ -6,9 +6,12 @@ import did
 def doctor_allowed(answer, doctor):
     return doctor in ['CHARLES']
 
-def OnFindReq(answers, query, issuerAet, calledAet):
+def onFindReq(answers, query, issuerAet, calledAet):
     print('Received incoming C-FIND request from %s:' % issuerAet)
-    retrun
+    print("answers")
+    print(answers)
+    print(dir(answers))
+    return
 
     answers = list(filter(lambda answer: doctor_allowed(answer, issuerAet), answers))
     # res = FindAnswers(answers, query, issuerAet, calledAet)
@@ -26,3 +29,16 @@ def OnFindReq(answers, query, issuerAet, calledAet):
 
     # To indicate a failure in the processing, one can raise an exception:
     #   raise Exception('Cannot handle C-MOVE')
+
+
+def onMove(**request):
+    study_iuid = request["StudyInstanceUID"]
+    patient_id = request["PatientID"]
+    doctor = request["OriginatorAET"]
+
+    if not did.doctor_has_vc(doctor, patient_id):
+        raise Exception('No Valid VC for doctor %s, patient %s' % (doctor, patient_id))
+
+
+    orthanc.LogWarning('C-MOVE: %s' % json.dumps(
+        request, indent = 4, sort_keys = True))

@@ -5,45 +5,38 @@ source ./vars.env
 
 # sudo apt install curl jq dcmtk python3-hl7 redis-tools
 
-echo "System: DID Create"
-
+echo "1- System: DID Create"
 source ./test_dids_create.sh
 
-# ./test_save_did.sh $PATIENT_01_NAME patient $PATIENT_01_DID
-# ./test_save_did.sh $PATIENT_02_NAME patient $PATIENT_02_DID
-# ./test_save_did.sh $DOCTOR_01_NAME doctor $DOCTOR_01_DID
-# ./test_save_did.sh $DOCTOR_02_NAME doctor $DOCTOR_02_DID
-
-echo "RIS: Send radiology order"
+echo "2- RIS: Send radiology order"
 ./ris_mwl_send_order.sh $PATIENT_01_NAME $PATIENT_01_DID
 ./ris_mwl_send_order.sh $PATIENT_02_NAME $PATIENT_02_DID
-exit
 
-echo "XRay Modality: Query Modality Worklist"
+echo "3- XRay Modality: Query Modality Worklist"
 ./xray_modality_query_worklist.sh
 
+echo "4- XRay Modality: Send Studies to PACS"
+./xray_modality_send_study.sh $PATIENT_01_NAME $PATIENT_01_DID 01.DCM
+./xray_modality_send_study.sh $PATIENT_02_NAME $PATIENT_02_DID 02.DCM
+
+echo "5- Test Scenario: 1"
+
+echo "6- Test Scenario: Patient: Patient $PATIENT_01_NAME Grant Doctor $DOCTOR_01_NAME access to Study"
+JWT_01_01=./ris_grant_access.sh $PATIENT_01_DID $DOCTOR_01_DID
+./test_doctor_save_vc.sh $DOCTOR_01_NAME $DOCTOR_01_DID "[$JWT_01_01]"
+
+echo "7- DICOM Viewer: Query PACS for Studies that doctor $DOCTOR_01_NAME can see!"
+./dicom_viewer_cmove_study.sh $DOCTOR_01_NAME
+
 exit 0
 
-echo "XRay Modality: Create And Send Study for Patients"
-./xray_modality_create_and_send_study.sh $PATIENT_01_NAME $PATIENT_01_DID
-./xray_modality_create_and_send_study.sh $PATIENT_02_NAME $PATIENT_02_DID
+# recommend to manually grant access to doctor 02 and examine change with dicom viewer
+echo "8- Test Scenario: 2"
 
-echo "RIS: Grant Doctor $DOCTOR_01_NAME access to Study of patient $PATIENT_01_NAME"
-./ris_grant_access.sh $PATIENT_01_DID $DOCTOR_01_DID
+echo "9- Test Scenario: Patient: Patient $PATIENT_01_NAME Grant Doctor $DOCTOR_01_NAME access to Study"
+JWT_01_02=./ris_grant_access.sh $PATIENT_01_DID $DOCTOR_02_DID
+JWT_02_02=./ris_grant_access.sh $PATIENT_02_DID $DOCTOR_02_DID
+./test_doctor_save_vc.sh scenario1dir $DOCTOR_02_NAME $DOCTOR_02_DID "[$JWT_01_02, $JWT_02_02]"
 
-echo "DICOM Viewer: Query PACS for Studies that doctor $DOCTOR_01_NAME can see!"
-./dicom_viewer_query_pacs.sh $DOCTOR_01_NAME
-
-exit 0
-
-echo "RIS: Grant Doctor $DOCTOR_01_NAME access to Study of patient $PATIENT_02_NAME"
-./ris_grant_access.sh $PATIENT_02_DID $DOCTOR_01_DID
-
-echo "RIS: Grant Doctor $DOCTOR_02_NAME access to Study of patient $PATIENT_02_NAME"
-./ris_grant_access.sh $PATIENT_02_DID $DOCTOR_02_DID
-
-echo "DICOM Viewer: Query PACS for Studies that doctor $DOCTOR_01_NAME can see!"
-./dicom_viewer_query_pacs.sh $DOCTOR_01_NAME
-
-echo "DICOM Viewer: Query PACS for Studies that doctor $DOCTOR_02_NAME can see!"
-./dicom_viewer_query_pacs.sh $DOCTOR_02_NAME
+echo "10- DICOM Viewer: Query PACS for Studies that doctor $DOCTOR_01_NAME can see!"
+./dicom_viewer_cmove_study.sh scenario2dir $DOCTOR_02_NAME

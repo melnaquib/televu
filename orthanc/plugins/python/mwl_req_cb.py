@@ -9,7 +9,7 @@ def doctor_allowed(answer, doctor):
     return doctor in ['CHARLES', 'DAVE']
     return answer['ReferringPhysicianName'] in ['Charles', 'Dave']
 
-def OnWorklist(answers, query, issuerAet, calledAet):
+def onWorklistReq(answers, query, issuerAet, calledAet):
     print('Received incoming C-FIND worklist request from %s:' % issuerAet)
 
     # Get a memory buffer containing the DICOM instance

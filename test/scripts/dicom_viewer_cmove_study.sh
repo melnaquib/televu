@@ -11,7 +11,6 @@ AEC=$PACS_AET
 HOST=127.0.0.1
 PORT=$PACS_PORT
 
-#findscu -v -W -aet DCMTK -aec $AEC $HOST $PORT -k 0010,0010
-echo findscu -v -S -aet $AET -aec $AEC $HOST $PORT \
+echo cmove -v -S -aet $AET -aec $AEC $HOST $PORT \
 -k QueryRetrieveLevel=STUDY \
 -k StudyInstanceUID
