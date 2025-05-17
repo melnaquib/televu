@@ -1,19 +1,36 @@
 # TeleVU
 
-Medical Imaging Server; PACS, that gives patient total control over medical images
-Televu can be deployed stand alone, or as a router in exising systems, to replace normal patient IDs with cheqd DIDs
+Medical Imaging System; PACS, that gives patient total control over patient's medical images.
+Televu can be deployed stand alone, or as a DICOM router / Proxy in exising systems, to replace normal patient IDs with cheqd Decentralized DIDs
 System is being developed to compliant with relevant standards;
-IHE, HL7, DICOM, HIPAA
+IHE MWL, HL7, DICOM, HIPAA
 
-Typical Scenario
+Typical Scenario, IHE Profile; 
+https://www.ihe.net/uploadedFiles/Documents/Radiology/IHE_RAD_TF_Vol2x.pdf
 
-- RIS Simulator Send Order Messages; HL7 ORM^O01 messages with patient DIDs
-- PACS System recieves Order, and prepares Modality Worklist entries for Radiology machines to get patient information and write inside DICOM images and studies
-- patient grants access by issuing VC for Doctors DID
+1-Patients sign up for DID, with cheqd that can happen with system outside Radiology center, like an independent DID Issuer, Insurance, government etc.
+
+2- RIS Simulator Send Order Messages; HL7 ORM^O01 messages with patient DIDs
+
+3- PACS System recieves Order, and prepares Modality Worklist entries for Radiology machines to get patient information and write inside DICOM images and studies
+
+4- XRay Modality: Send Studies to PACS
+
+5- test scenario 1
+
+6- patient grants access by issuing VC for Doctors DID
 Machine Queries PACS, gets patient Info, Construct DICOM Medical Image, and send to PACS
 Doctor, Using DICOM Viewer from his workstation, queries PACS for patietns images
--PACS filter results by verifying VCs issued by Patients to Doctors
 
+7-PACS filter results by verifying VCs issued by Patients to Doctors
+
+8- for demo purpose, we use Doctor Name to identify DICOM client, cli tool or DICOM viewer, as its AET; Aplication Entity Title; to be configure within respective tools.
+
+# user can manually use scripts to grant access
+
+## FUTURE WORK
+#use gui tools for demo like DVTK
+#ready UI compoents to grant / revoke VCs
 
 ## RUN
 
